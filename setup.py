@@ -25,7 +25,8 @@ setup(
         'Programming Language :: Python',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    packages = find_packages(),
+    #packages = find_packages('src'),
+    packages = {'': 'src'},
     include_package_data = True,
     zip_safe = False,
 )
