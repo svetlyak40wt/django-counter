@@ -3,7 +3,7 @@ import sys
 from setuptools import setup, find_packages
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
-from version import __version__ as version
+from django_app_template import __version__ as version
 
 setup(
     name = 'django-app-template',
@@ -25,8 +25,8 @@ setup(
         'Programming Language :: Python',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    #packages = find_packages('src'),
-    packages = {'': 'src'},
+    package_dir = {'': 'src'},
+    packages = find_packages('src'),
     include_package_data = True,
     zip_safe = False,
 )
