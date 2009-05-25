@@ -11,7 +11,7 @@ What is project depends on.
 Installation
 ------------
 
-* Add application ``django_app_template`` to the ``INSTALLED_APPS`` list.
+* Add application ``django_counter`` to the ``INSTALLED_APPS`` list.
 * Run ``./manage.py syncdb`` to create all neccessary tables.
 * Add these variables to the settings.py::
 

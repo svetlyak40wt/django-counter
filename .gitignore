@@ -4,6 +4,6 @@
 bin
 develop-eggs
 dist
-django_app_template.egg-info
+django_counter.egg-info
 parts
 build

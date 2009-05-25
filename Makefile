@@ -60,9 +60,9 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in build/qthelp, like this:"
-	@echo "# qcollectiongenerator build/qthelp/django-app-template.qhcp"
+	@echo "# qcollectiongenerator build/qthelp/django-counter.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile build/qthelp/django-app-template.qhc"
+	@echo "# assistant -collectionFile build/qthelp/django-counter.qhc"
 
 latex:
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) build/latex
