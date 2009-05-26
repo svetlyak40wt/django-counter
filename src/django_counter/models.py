@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 class CountManager(models.Manager):
     def get_for_object(self, obj):
         ctype = ContentType.objects.get_for_model(obj)
-        return self.get_or_create(content_type=ctype, object_id=obj.id)
+        return self.get_or_create(content_type=ctype, object_id=obj.id)[0]
 
     def get_for_model(self, model):
         ctype = ContentType.objects.get_for_model(model)
@@ -14,7 +14,7 @@ class CountManager(models.Manager):
 
     def increment(self, ctype_id, object_id):
         ctype = ContentType.objects.get(id=ctype_id)
-        counter,created = self.get_or_create(content_type=ctype, object_id=object_id)
+        counter, created = self.get_or_create(content_type=ctype, object_id=object_id)
         counter.counter += 1
         counter.save()
         return counter

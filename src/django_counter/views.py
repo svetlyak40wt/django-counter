@@ -1,22 +1,33 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.conf import settings
 import mimetypes, rfc822, os, stat
-from counter.models import ViewCounter
 from pdb import set_trace
 from django.shortcuts import get_object_or_404
-from models import DownloadCounter, Referer
+from models import DownloadCounter, Referer, ViewCounter
 
-IMG_PATH = os.path.join( settings.MEDIA_ROOT, settings.VIEW_COUNTER_IMAGE )
+VIEW_COUNTER_IMAGE = getattr(settings, 'VIEW_COUNTER_IMAGE', None)
+if VIEW_COUNTER_IMAGE is not None:
+    _ff = open(
+        os.path.join( settings.MEDIA_ROOT, settings.VIEW_COUNTER_IMAGE ),
+        'rb')
+    IMG_MIMETYPE = mimetypes.guess_type(IMG_PATH)[0]
+else:
+    from PIL import Image
+    from StringIO import StringIO
+    _img  = Image.fromstring('RGB', (1,1), '000')
+    _ff = StringIO()
+    _img.save(_ff, format='GIF')
+    _ff.seek(0)
+    IMG_MIMETYPE = 'image/gif'
+
+IMG_DATA = _ff.read()
 
 def count(request, ctype_id, object_id):
     ctype_id = int(ctype_id)
     object_id = int(object_id)
     counter = ViewCounter.objects.increment(ctype_id, object_id)
 
-    mimetype = mimetypes.guess_type(IMG_PATH)[0]
-    statobj = os.stat(IMG_PATH)
-    contents = open(IMG_PATH, 'rb').read()
-    response = HttpResponse(contents, mimetype=mimetype)
+    response = HttpResponse(IMG_DATA, mimetype=IMG_MIMETYPE)
     return response
 
 # We may use
