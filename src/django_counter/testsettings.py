@@ -5,4 +5,6 @@ INSTALLED_APPS = [
     'django_counter',
 ]
 ROOT_URLCONF = 'django_counter.urls'
-VIEW_COUNTER_IMAGE = None
+TEMPLATE_DIRS = (
+    'src/django_counter/test_templates',
+)

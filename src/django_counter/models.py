@@ -15,7 +15,7 @@ class CountManager(models.Manager):
     def increment(self, ctype_id, object_id):
         ctype = ContentType.objects.get(id=ctype_id)
         counter, created = self.get_or_create(content_type=ctype, object_id=object_id)
-        counter.counter += 1
+        counter.count += 1
         counter.save()
         return counter
 
@@ -29,7 +29,7 @@ class ViewCounter(models.Model):
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField(_('Object ID'))
     object = generic.GenericForeignKey('content_type', 'object_id')
-    counter = models.PositiveIntegerField(_('Counter'), default = 0)
+    count = models.PositiveIntegerField(_('Counter'), default = 0)
 
     objects = CountManager()
 
@@ -46,47 +46,35 @@ class ViewCounter(models.Model):
         verbose_name = _('View Counter')
         verbose_name_plural = _('View Counters')
         unique_together = (('content_type', 'object_id'),)
-        ordering = ('-counter',)
-
-    class Admin:
-        list_display = ('get_object_title', 'get_content_type', 'counter')
-        list_filter = ('content_type',)
+        ordering = ('-count',)
 
     def __unicode__(self):
-        return _('Counter for %(object)s = %(counter)d') % (self.object, self.counter)
+        return _('Counter for %(object)s = %(count)d') % (self.object, self.count)
 
-class DownloadCounter( models.Model ):
+class RedirCounter( models.Model ):
     title = models.CharField( _('Title'), max_length = 40, blank=True)
-    redir_url = models.CharField(_('Redirect URL'), max_length=255)
-    cnt = models.PositiveIntegerField( _('Counter'), default = 0 )
+    url = models.CharField(_('Redirect URL'), max_length=255, unique = True)
+    count = models.PositiveIntegerField( _('Counter'), default = 0 )
 
     def __unicode__(self):
         return self.title
-
-    class Admin:
-        list_display = ('id', 'title', 'redir_url', 'cnt')
-        list_display_links =  list_display
 
     class Meta:
         verbose_name = _('Download Counter')
         verbose_name_plural = _('Download Counters')
 
 class Referer( models.Model ):
-    counter = models.ForeignKey(DownloadCounter)
+    counter = models.ForeignKey(RedirCounter, related_name = 'referers')
     url = models.CharField(_('URL'), max_length = 255)
-    cnt = models.PositiveIntegerField( _('Counter'), default = 0 )
+    count = models.PositiveIntegerField( _('Counter'), default = 0 )
     update_date = models.DateTimeField( editable = False, auto_now = True )
 
     def __unicode__(self):
-        return u'To %s from %s - %s' % (self.counter, self.url, self.cnt)
-
-    class Admin:
-        list_display = ('id', 'counter', 'url', 'cnt', 'update_date')
-        date_hierarchy = 'update_date'
-        list_filter = ('update_date',)
+        return u'To %s from %s - %s' % (self.counter, self.url, self.count)
 
     class Meta:
         verbose_name = _('Referer')
         verbose_name_plural = _('Referers')
         ordering = ('-update_date',)
         get_latest_by = 'update_date'
+
