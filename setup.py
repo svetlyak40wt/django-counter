@@ -8,13 +8,13 @@ from django_counter import __version__ as version
 setup(
     name = 'django-counter',
     version = version,
-    description = '''Template for my django applications.''',
+    description = 'This is a general purpose page views / redirects counter for django projects.',
     keywords = 'django apps',
     license = 'New BSD License',
     author = 'Alexander Artemenko',
     author_email = 'svetlyak.40wt@gmail.com',
     url = 'http://github.com/svetlyak40wt/django-counter/',
-    install_requires = [],
+    install_requires = ['PIL'],
     dependency_links = [],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
