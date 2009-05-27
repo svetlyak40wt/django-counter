@@ -1,7 +1,7 @@
 from django import template
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
-from counter.models import ViewCounter
+from django_counter.models import ViewCounter
 
 def counter(object):
     ctype = ContentType.objects.get_for_model(object)
@@ -42,7 +42,7 @@ class ViewCountNode(template.Node):
             except template.VariableDoesNotExist:
                 return ''
         try:
-            count = ViewCounter.objects.get(content_type=self.content_type, object_id=object_id).counter
+            count = ViewCounter.objects.get(content_type=self.content_type, object_id=object_id).count
         except ViewCounter.DoesNotExist:
             count = 0
         context[self.var] = count

@@ -1,6 +1,13 @@
 ChangeLog
 =========
 
+0.1.2
+-----
+
+* Fixed  few bugs.
+* README updated.
+* Used named urlpatterns.
+
 0.1.1
 -----
 
