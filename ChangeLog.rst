@@ -1,6 +1,16 @@
 ChangeLog
 =========
 
+0.1.4
+-----
+
+* Fixed missing templates to MANIFEST.in
+
+0.1.3
+-----
+
+* Fixed setup.py and now package available at PyPi.
+
 0.1.2
 -----
 
