@@ -1,3 +1,3 @@
 #!/bin/bash
 
-buildout -v -o buildout:install-from-cache=true
+bin/buildout -v -o buildout:install-from-cache=true
