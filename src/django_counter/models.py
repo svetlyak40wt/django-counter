@@ -49,7 +49,7 @@ class ViewCounter(models.Model):
         ordering = ('-count',)
 
     def __unicode__(self):
-        return _('Counter for %(object)s = %(count)d') % (self.object, self.count)
+        return _(u'Counter for %(object)s = %(count)d') % dict(object = self.object, count = self.count)
 
 class RedirCounter( models.Model ):
     title = models.CharField( _('Title'), max_length = 40, blank=True)
@@ -70,7 +70,8 @@ class Referer( models.Model ):
     update_date = models.DateTimeField( editable = False, auto_now = True )
 
     def __unicode__(self):
-        return u'To %s from %s - %s' % (self.counter, self.url, self.count)
+        return _(u'To %(counter)s from %(url)s - %(count)s') % dict(
+            counter = self.counter, url = self.url, count = self.count)
 
     class Meta:
         verbose_name = _('Referer')
