@@ -1,6 +1,12 @@
 ChangeLog
 =========
 
+0.1.5
+-----
+
+* Added russian localization.
+* Fixed error in __unicode__ method (ISSUE-2).
+
 0.1.4
 -----
 
