@@ -1,0 +1,79 @@
+# Translation for django-counter
+# Copyright (C) 2009, Alexander Artemenko
+# This file is distributed under the same license as the django-counter package.
+# Alexander Artemenko <svetlyak.40wt@gmail.com>, 2009.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-22 08:46+0400\n"
+"PO-Revision-Date: 2009-09-22 08:52+0400\n"
+"Last-Translator: Alexander Artemenko <svetlyak.40wt@gmail.com>\n"
+"Language-Team: ru <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:30
+msgid "Object ID"
+msgstr "ID объекта"
+
+#: models.py:32 models.py:57 models.py:69
+msgid "Counter"
+msgstr "Счетчик"
+
+#: models.py:38
+msgid "Object title"
+msgstr "Название объекта"
+
+#: models.py:43
+msgid "Content type"
+msgstr "Тип содержимого"
+
+#: models.py:46
+msgid "View Counter"
+msgstr "Счетчик просмотров"
+
+#: models.py:47
+msgid "View Counters"
+msgstr "Счетчики просмотров"
+
+#: models.py:52
+#, python-format
+msgid "Counter for %(object)s = %(count)d"
+msgstr "Счетчик для %(object)s = %(count)d"
+
+#: models.py:55
+msgid "Title"
+msgstr "Заголовок"
+
+#: models.py:56
+msgid "Redirect URL"
+msgstr "Redirect URL"
+
+#: models.py:63
+msgid "Download Counter"
+msgstr "Счетчик скачиваний"
+
+#: models.py:64
+msgid "Download Counters"
+msgstr "Счетчики скачиваний"
+
+#: models.py:68
+msgid "URL"
+msgstr "URL"
+
+#: models.py:73
+#, python-format
+msgid "To %(counter)s from %(url)s - %(count)s"
+msgstr "Для %(counter)s от %(url)s - %(count)s"
+
+#: models.py:77
+msgid "Referer"
+msgstr "Реферер"
+
+#: models.py:78
+msgid "Referers"
+msgstr "Рефереры"
