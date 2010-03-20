@@ -4,7 +4,11 @@ from pdb import set_trace
 from django.shortcuts import get_object_or_404
 from models import RedirCounter, Referer, ViewCounter
 
-from PIL import Image
+try:
+    from PIL import Image
+except ImportError:
+    import Image
+
 from StringIO import StringIO
 
 _img  = Image.fromstring('RGB', (1,1), '000')
