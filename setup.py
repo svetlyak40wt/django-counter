@@ -14,7 +14,7 @@ setup(
     author = 'Alexander Artemenko',
     author_email = 'svetlyak.40wt@gmail.com',
     url = 'http://github.com/svetlyak40wt/django-counter/',
-    install_requires = ['PIL'],
+    install_requires = ['Pillow'],
     dependency_links = [],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
